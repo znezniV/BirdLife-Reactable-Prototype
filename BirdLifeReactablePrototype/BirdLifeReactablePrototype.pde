@@ -142,7 +142,7 @@ void addTuioBlob(TuioBlob tblb) {
 // called when a blob is moved
 void updateTuioBlob (TuioBlob tblb) {
   if (verbose) println("set blb " + tblb.getBlobID() + " (" + tblb.getSessionID() + ") " + tblb.getX() + " " + tblb.getY() + " " + tblb.getAngle() + " " + tblb.getWidth() + " " + tblb.getHeight() + " " + tblb.getArea()
-          + " " + tblb.getMotionSpeed() + " " + tblb.getRotationSpeed()+ " " + tblb.getMotionAccel() + " " + tblb.getRotationAccel());
+          + " " + tblb.getMotionSpeed() + " " + tblb.getRotationSpeed() + " " + tblb.getMotionAccel() + " " + tblb.getRotationAccel());
   //redraw()
 }
 
