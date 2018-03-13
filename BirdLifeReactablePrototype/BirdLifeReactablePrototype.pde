@@ -15,6 +15,9 @@ PFont font;
 boolean verbose = false; // print console debug messages
 boolean callback = true; // updates only after callbacks
 
+// tuio object list
+ArrayList<TuioObject> tuioObjectList;
+
 void setup() {
 	// GUI setup
 	noCursor();
@@ -45,9 +48,10 @@ void draw() {
 	background(255);
 	textFont(font,18 * scale_factor);
 	float obj_size = object_size * scale_factor; 
-	float cur_size = cursor_size * scale_factor; 
-	 
-	ArrayList<TuioObject> tuioObjectList = tuioClient.getTuioObjectList();
+	float cur_size = cursor_size * scale_factor;
+
+	// draw tuio objects
+	tuioObjectList = tuioClient.getTuioObjectList();
 	for (int i = 0; i < tuioObjectList.size(); i++) {
 		TuioObject tobj = tuioObjectList.get(i);
 		stroke(0);
