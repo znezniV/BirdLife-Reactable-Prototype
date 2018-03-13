@@ -3,6 +3,9 @@ import TUIO.*;
 // declare a TuioProcessing client
 TuioProcessing tuioClient;
 
+int numberOfFields = 3;
+
+Field fields [] = new Field [3];
 
 // these are some helper variables which are used
 // to create scalable graphical feedback
@@ -24,6 +27,10 @@ void setup() {
 	size(displayWidth, displayHeight);
 	noStroke();
 	fill(0);
+
+	for (int i = 0; i < numberOfFields; i++) {
+		fields[i] = new Field(new PVector((200 * i + 100), 500), i);
+	}
 	
 	// periodic updates
 	if (!callback) {
@@ -63,6 +70,11 @@ void draw() {
 		popMatrix();
 		fill(255);
 		text(""+tobj.getSymbolID(), tobj.getScreenX(width), tobj.getScreenY(height));
+	}
+
+	// draw fields
+	for (int i = 0; i < fields.length; i++) {
+		fields[i].draw();
 	}
 }
 
