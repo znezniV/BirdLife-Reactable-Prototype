@@ -67,6 +67,8 @@ void draw() {
 		translate(tobj.getScreenX(width),tobj.getScreenY(height));
 		rotate(tobj.getAngle());
 		rect(-obj_size/2, -obj_size/2, obj_size, obj_size);
+		fill(0,255,0);
+		rect(-6/2, -6/2, 6,6);
 		popMatrix();
 		fill(255);
 		text(""+tobj.getSymbolID(), tobj.getScreenX(width), tobj.getScreenY(height));
