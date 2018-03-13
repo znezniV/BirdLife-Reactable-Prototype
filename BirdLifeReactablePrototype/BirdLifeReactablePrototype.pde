@@ -3,13 +3,6 @@ import TUIO.*;
 // declare a TuioProcessing client
 TuioProcessing tuioClient;
 
-// import sound library
-import processing.sound.*;
-SoundFile file0;
-SoundFile file1;
-SoundFile file2;
-SoundFile file3;
-SoundFile file4;
 
 // these are some helper variables which are used
 // to create scalable graphical feedback
@@ -39,13 +32,6 @@ void setup() {
 	
 	font = createFont("Arial", 18);
 	scale_factor = height/table_size;
-	
-	// Load a soundfile from the /data/sounds folder of the sketch and play it back
-	file0 = new SoundFile(this, "sounds/Hi-1.aif");
-	file1 = new SoundFile(this, "sounds/Hi-2.aif");
-	file2 = new SoundFile(this, "sounds/Mid-1.aif");
-	file3 = new SoundFile(this, "sounds/Mid-2.aif");
-	file4 = new SoundFile(this, "sounds/Low-1.aif");
 	
 	// finally we create an instance of the TuioProcessing client
 	// since we add "this" class as an argument the TuioProcessing class expects
@@ -89,26 +75,6 @@ void updateTuioObject (TuioObject tobj) {
 
 // called when an object is removed from the scene
 void removeTuioObject(TuioObject tobj) {
-  switch (tobj.getSymbolID()) {
-        case 0:
-            file.play();
-            break;
-        case 1:
-            file.play();
-            break;
-        case 2:
-            file.play();
-            break;
-        case 3:
-            file.play();
-            break;
-        case 4:
-            file.play();
-            break;
-    }
-
-    println("removed: " + tobj.getSymbolID());
-  println("removed");
   if (verbose) println("del obj " + tobj.getSymbolID() + " (" + tobj.getSessionID() + ")");
 }
 
