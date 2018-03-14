@@ -28,9 +28,33 @@ void setup() {
 	noStroke();
 	fill(0);
 
-	for (int i = 0; i < numberOfFields; i++) {
-		fields[i] = new Field(new PVector((200 * i + 100), 500), i);
-	}
+	// Configure fields
+	ArrayList<Integer> matchingNumbers0 = new ArrayList<Integer>();
+	ArrayList<Integer> matchingNumbers1 = new ArrayList<Integer>();
+	ArrayList<Integer> matchingNumbers2 = new ArrayList<Integer>();
+
+	matchingNumbers0.add(0);
+	matchingNumbers1.add(1);
+	matchingNumbers2.add(2);
+
+	// int[][] matchingArray = {{0,2}, {1}, {2}};
+	// for (array : matchingArray) {
+	// 	for (number : array) {
+	// 		println("number: "+number);
+	// 	}
+	// }
+
+	// for (int i = 0; i < numberOfFields; i++) {
+	// 	fields[i] = new Field(new PVector((200 * i + 100), 500));
+	// }
+
+	fields[0] = new Field(new PVector(100, 500));
+	fields[1] = new Field(new PVector(300, 500));
+	fields[2] = new Field(new PVector(500, 500));
+
+	fields[0].numbers = matchingNumbers0;
+	fields[1].numbers = matchingNumbers1;
+	fields[2].numbers = matchingNumbers2;
 	
 	// periodic updates
 	if (!callback) {
