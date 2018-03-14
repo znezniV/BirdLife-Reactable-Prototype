@@ -98,9 +98,21 @@ void draw() {
 		text(""+tobj.getSymbolID(), tobj.getScreenX(width), tobj.getScreenY(height));
 	}
 
+	// check fields filled correctly
+	boolean allFieldsCorrect = true;
+
 	// draw fields
-	for (int i = 0; i < fields.length; i++) {
-		fields[i].draw();
+	for (Field field : fields) {
+		field.draw();
+
+		if (!field.correctBlock) {
+			allFieldsCorrect = false;
+		}
+	}
+
+	// if fields are filled correctly
+	if (allFieldsCorrect) {
+		println("all fields are correct");
 	}
 }
 
