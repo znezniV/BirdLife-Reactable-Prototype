@@ -34,6 +34,7 @@ void setup() {
 	ArrayList<Integer> matchingNumbers2 = new ArrayList<Integer>();
 
 	matchingNumbers0.add(0);
+	matchingNumbers0.add(1);
 	matchingNumbers1.add(1);
 	matchingNumbers2.add(2);
 
