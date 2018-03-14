@@ -1,11 +1,13 @@
 class Field { 
-	int x, y, w, h, number;
-	boolean rightBlock;
+	int x, y, w, h;
+	boolean correctBlock;
 	color c;
 
 	color colorNeutral = color(0);
 	color colorSuccess = color(0,255,0);
 	color colorError = color(255,0,0);
+
+	ArrayList<Integer> numbers;
 
 	// TODO: array of possible numbers that can match - currently only one number
 	Field (PVector pos, int nr) {
@@ -13,8 +15,7 @@ class Field {
 		y = int(pos.y);
 		w = 75;
 		h = 75;
-		number = nr;
-		rightBlock = false;
+		correctBlock = false;
 		c = colorNeutral;
 
 	}
