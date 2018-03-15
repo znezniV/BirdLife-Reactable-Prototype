@@ -3,7 +3,7 @@ class Field {
 	boolean correctBlock;
 	color c;
 
-	color colorNeutral = color(0);
+	color colorNeutral = color(255,255/2);
 	color colorSuccess = color(0,255,0);
 	color colorError = color(255,0,0);
 
@@ -26,10 +26,9 @@ class Field {
 	}
 
 	void draw() { 
-		noFill();
-		stroke(c);
-		strokeWeight(4);
-		rect(x, y, w, h);
+		noStroke();
+		fill(c);
+		ellipse(x, y, w, h);
 		collideWithBlock();
 
 		switch (cat) {

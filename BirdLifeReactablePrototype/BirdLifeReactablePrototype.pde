@@ -54,7 +54,7 @@ void setup() {
 // within the draw method we retrieve an ArrayList of type <TuioObject>
 // from the TuioProcessing client and then loops over all lists to draw the graphical feedback.
 void draw() {
-	background(255);
+	background(0);
 	textFont(font,18 * scale_factor);
 	float obj_size = object_size * scale_factor; 
 	float cur_size = cursor_size * scale_factor;
