@@ -42,7 +42,7 @@ void setup() {
 		noLoop(); // or callback updates 
 	}
 	
-	font = createFont("Arial", 18);
+	font = createFont("InterUI-Regular", 20);
 	scale_factor = height/table_size;
 	
 	// finally we create an instance of the TuioProcessing client
