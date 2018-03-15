@@ -3,9 +3,9 @@ import TUIO.*;
 // declare a TuioProcessing client
 TuioProcessing tuioClient;
 
-int numberOfFields = 3;
+int numberOfFields = 4;
 
-Field fields [] = new Field [3];
+Field fields [] = new Field [numberOfFields];
 
 // these are some helper variables which are used
 // to create scalable graphical feedback
@@ -29,33 +29,10 @@ void setup() {
 	fill(0);
 
 	// Configure fields
-	ArrayList<Integer> matchingNumbers0 = new ArrayList<Integer>();
-	ArrayList<Integer> matchingNumbers1 = new ArrayList<Integer>();
-	ArrayList<Integer> matchingNumbers2 = new ArrayList<Integer>();
-
-	matchingNumbers0.add(0);
-	matchingNumbers0.add(1);
-	matchingNumbers1.add(1);
-	matchingNumbers2.add(2);
-
-	// int[][] matchingArray = {{0,2}, {1}, {2}};
-	// for (array : matchingArray) {
-	// 	for (number : array) {
-	// 		println("number: "+number);
-	// 	}
-	// }
-
-	// for (int i = 0; i < numberOfFields; i++) {
-	// 	fields[i] = new Field(new PVector((200 * i + 100), 500));
-	// }
-
-	fields[0] = new Field(new PVector(100, 500));
-	fields[1] = new Field(new PVector(300, 500));
-	fields[2] = new Field(new PVector(500, 500));
-
-	fields[0].numbers = matchingNumbers0;
-	fields[1].numbers = matchingNumbers1;
-	fields[2].numbers = matchingNumbers2;
+	fields[0] = new Field(new PVector(100, 500), new int[] {0, 2}, "alpha");
+	fields[1] = new Field(new PVector(300, 500), new int[] {1}, "beta");
+	fields[2] = new Field(new PVector(500, 500), new int[] {2}, "gamma");
+	fields[3] = new Field(new PVector(700, 500), new int[] {3}, "omega");
 	
 	// periodic updates
 	if (!callback) {
