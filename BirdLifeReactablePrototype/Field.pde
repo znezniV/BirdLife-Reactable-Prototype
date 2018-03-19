@@ -16,8 +16,8 @@ class Field {
 	Field (PVector pos, int[] numbers, String category) {
 		x = int(pos.x);
 		y = int(pos.y);
-		w = 75;
-		h = 75;
+		w = 99;
+		h = 99;
 		correctBlock = false;
 		c = colorNeutral;
 		cat = category;
@@ -44,7 +44,12 @@ class Field {
 				break;	
 		}
 		fill(0);
-		text(text, x -7,  y+7);
+		pushMatrix();
+		translate(x, y);
+		rotate(radians(-90));
+		textFont(font,40);
+		text(text, 0 - w/8, 0 + h/9);
+		popMatrix();
 	}
 
 	void collideWithBlock() {
