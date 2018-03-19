@@ -1,11 +1,17 @@
 // import the TUIO library
 import TUIO.*;
+import processing.sound.*;
+
+import ddf.minim.*;
+Minim minim;
+
 // declare a TuioProcessing client
 TuioProcessing tuioClient;
 
-int numberOfFields = 4;
+int numberOfFields = 7;
 
 Field fields [] = new Field [numberOfFields];
+AudioPlayer sounds [] = new AudioPlayer [6];
 
 // these are some helper variables which are used
 // to create scalable graphical feedback
@@ -18,21 +24,38 @@ PFont font;
 boolean verbose = false; // print console debug messages
 boolean callback = true; // updates only after callbacks
 
+boolean projector = false;
+
 // tuio object list
 ArrayList<TuioObject> tuioObjectList;
 
 void setup() {
 	// GUI setup
+	// fullScreen();
+
+	size(960, 540);
+
 	noCursor();
-	size(displayWidth, displayHeight);
 	noStroke();
 	fill(0);
 
 	// Configure fields
-	fields[0] = new Field(new PVector(100, 500), new int[] {0, 2}, "alpha");
-	fields[1] = new Field(new PVector(300, 500), new int[] {1}, "beta");
-	fields[2] = new Field(new PVector(500, 500), new int[] {2}, "gamma");
-	fields[3] = new Field(new PVector(700, 500), new int[] {3}, "omega");
+	fields[0] = new Field(new PVector(1296, 918), new int[] {0, 2}, "alpha");
+	fields[1] = new Field(new PVector(1296, 786), new int[] {1}, "beta");
+	fields[2] = new Field(new PVector(1296, 655), new int[] {2}, "gamma");
+	fields[3] = new Field(new PVector(1425, 525), new int[] {3}, "omega");
+	fields[4] = new Field(new PVector(1553, 393), new int[] {3}, "omega");
+	fields[5] = new Field(new PVector(1553, 261), new int[] {3}, "omega");
+	fields[6] = new Field(new PVector(1682, 130), new int[] {3}, "omega");
+
+	minim = new Minim (this);
+
+	sounds[0] = minim.loadFile("sounds/Alpha01.wav");
+	sounds[1] = minim.loadFile("sounds/Alpha02.wav");
+	sounds[2] = minim.loadFile("sounds/Beta01.wav");
+	sounds[3] = minim.loadFile("sounds/Gamma01.wav");
+	sounds[4] = minim.loadFile("sounds/Gamma02.wav");
+	sounds[5] = minim.loadFile("sounds/Omega01.wav");
 	
 	// periodic updates
 	if (!callback) {
@@ -42,7 +65,7 @@ void setup() {
 		noLoop(); // or callback updates 
 	}
 	
-	font = createFont("InterUI-Regular", 20);
+	font = createFont("HelveticaNeue", 20);
 	scale_factor = height/table_size;
 	
 	// finally we create an instance of the TuioProcessing client
@@ -54,6 +77,9 @@ void setup() {
 // within the draw method we retrieve an ArrayList of type <TuioObject>
 // from the TuioProcessing client and then loops over all lists to draw the graphical feedback.
 void draw() {
+	if (!projector) {
+		scale(0.5);	
+	}
 	background(0);
 	textFont(font,18 * scale_factor);
 	float obj_size = object_size * scale_factor; 
