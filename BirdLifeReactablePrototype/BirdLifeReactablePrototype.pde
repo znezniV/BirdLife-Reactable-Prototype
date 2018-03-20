@@ -120,7 +120,28 @@ void draw() {
 
 	// if fields are filled correctly
 	if (allFieldsCorrect) {
-		println("all fields are correct");
+
+		if (snippetCount == 0) {
+
+			soundMapping(fields[0].correctID).rewind();
+			soundMapping(fields[0].correctID).play();
+			snippetCount++;
+
+		} else if (snippetCount < sounds.length) {
+
+			if (!soundMapping(fields[snippetCount - 1].correctID).isPlaying()) {
+
+				soundMapping(fields[snippetCount].correctID).rewind();
+				soundMapping(fields[snippetCount].correctID).play();
+				snippetCount++;
+			}
+		}
+
+	} else {
+		snippetCount = 0;
+	}
+}
+
 // map sounds to argument
 AudioPlayer soundMapping(int id) {
 	switch (id) {
