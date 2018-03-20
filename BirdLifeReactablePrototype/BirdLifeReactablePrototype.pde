@@ -93,17 +93,18 @@ void draw() {
 	tuioObjectList = tuioClient.getTuioObjectList();
 	for (int i = 0; i < tuioObjectList.size(); i++) {
 		TuioObject tobj = tuioObjectList.get(i);
+		PVector pos = new PVector(trX(tobj.getScreenX(width)), tobj.getScreenY(height));
 		stroke(0);
-		fill(0, 0, 0);
+		fill(0, 255, 0);
 		pushMatrix();
-		translate(tobj.getScreenX(width),tobj.getScreenY(height));
+		translate(pos.x, pos.y);
 		rotate(tobj.getAngle());
-		rect(-obj_size/2, -obj_size/2, obj_size, obj_size);
+		ellipse(0, 0, obj_size, obj_size);
 		fill(0,255,0);
 		rect(-6/2, -6/2, 6,6);
 		popMatrix();
 		fill(255);
-		text(""+tobj.getSymbolID(), tobj.getScreenX(width), tobj.getScreenY(height));
+		text(""+tobj.getSymbolID(), pos.x, pos.y);
 	}
 
 	// check fields filled correctly
@@ -163,6 +164,11 @@ AudioPlayer soundMapping(int id) {
 		default :
 			return sounds[0];	
 	}
+}
+
+// mirror x-position of tujo object
+int trX (int posX) {
+	return width - posX;
 }
 
 // called when an object is added to the scene

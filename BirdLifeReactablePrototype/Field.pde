@@ -65,8 +65,8 @@ class Field {
 		for (int i = 0; i < tuioObjectList.size(); i++) {
 			TuioObject block = tuioObjectList.get(i);
 			if (
-				block.getScreenX(width) >= x &&
-				block.getScreenX(width) <= x + w && 
+				trX(block.getScreenX(width)) >= x &&
+				trX(block.getScreenX(width)) <= x + w && 
 				block.getScreenY(height) >= y && 
 				block.getScreenY(height) <= y + h
 			) {
