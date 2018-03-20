@@ -1,6 +1,14 @@
 class Field { 
 	int x, y, w, h;
+
+	// ID of any block that is placed on field (no matter if correct or not)
+	Integer occupiedID;
+
+	// ID of correct block that is placed on field
+	Integer correctID;
+
 	boolean correctBlock;
+	boolean isOccupied;
 	color c;
 
 	color colorNeutral = color(255,255/2);
@@ -19,6 +27,7 @@ class Field {
 		w = 99;
 		h = 99;
 		correctBlock = false;
+		isOccupied = false;
 		c = colorNeutral;
 		cat = category;
 		nrs = numbers;
@@ -70,15 +79,23 @@ class Field {
 					
 				if (correctBlock) {
 					c = colorSuccess;
+					correctID = block.getSymbolID();
 				} else {
 					c = colorError;
+					correctID = null;
 				}
 
+				isOccupied = true;
+				occupiedID = block.getSymbolID();
 				break;
 
 			} else {
 				c = colorNeutral;
 				correctBlock = false;
+				isOccupied = false;
+				occupiedID = null;
+				correctID = null;
+
 			}
 		}
 	}
