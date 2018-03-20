@@ -121,6 +121,25 @@ void draw() {
 	// if fields are filled correctly
 	if (allFieldsCorrect) {
 		println("all fields are correct");
+// map sounds to argument
+AudioPlayer soundMapping(int id) {
+	switch (id) {
+		case 0:
+			return sounds[0];
+		case 1:
+			return sounds[1];
+		case 2:
+			return sounds[2];
+		case 3:
+			return sounds[3];
+		case 4:
+			return sounds[4];
+		case 5:
+			return sounds[5];
+		case 6:
+			return sounds[7];
+		default :
+			return sounds[0];	
 	}
 }
 
