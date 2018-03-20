@@ -8,10 +8,11 @@ Minim minim;
 // declare a TuioProcessing client
 TuioProcessing tuioClient;
 
-int numberOfFields = 7;
+int numberOfFields = 8;
 
 Field fields [] = new Field [numberOfFields];
-AudioPlayer sounds [] = new AudioPlayer [6];
+AudioPlayer sounds [] = new AudioPlayer [8];
+int snippetCount = 0;
 
 // these are some helper variables which are used
 // to create scalable graphical feedback
@@ -40,13 +41,14 @@ void setup() {
 	fill(0);
 
 	// Configure fields
-	fields[0] = new Field(new PVector(1296, 918), new int[] {0, 2}, "alpha");
-	fields[1] = new Field(new PVector(1296, 786), new int[] {1}, "beta");
-	fields[2] = new Field(new PVector(1296, 655), new int[] {2}, "gamma");
-	fields[3] = new Field(new PVector(1425, 525), new int[] {3}, "omega");
-	fields[4] = new Field(new PVector(1553, 393), new int[] {3}, "omega");
-	fields[5] = new Field(new PVector(1553, 261), new int[] {3}, "omega");
-	fields[6] = new Field(new PVector(1682, 130), new int[] {3}, "omega");
+	fields[0] = new Field(new PVector(1296, 999), new int[] {0, 2}, "alpha");
+	fields[1] = new Field(new PVector(1296, 868), new int[] {1}, "alpha");
+	fields[2] = new Field(new PVector(1296, 737), new int[] {2}, "alpha");
+	fields[3] = new Field(new PVector(1425, 606), new int[] {3}, "beta");
+	fields[4] = new Field(new PVector(1425, 475), new int[] {3}, "beta");
+	fields[5] = new Field(new PVector(1553, 343), new int[] {3}, "gamma");
+	fields[6] = new Field(new PVector(1553, 212), new int[] {3}, "gamma");
+	fields[7] = new Field(new PVector(1682, 81), new int[] {3}, "omega");
 
 	minim = new Minim (this);
 
@@ -56,6 +58,8 @@ void setup() {
 	sounds[3] = minim.loadFile("sounds/Gamma01.wav");
 	sounds[4] = minim.loadFile("sounds/Gamma02.wav");
 	sounds[5] = minim.loadFile("sounds/Omega01.wav");
+	sounds[6] = minim.loadFile("sounds/Omega01.wav");
+	sounds[7] = minim.loadFile("sounds/Omega01.wav");
 	
 	// periodic updates
 	if (!callback) {
