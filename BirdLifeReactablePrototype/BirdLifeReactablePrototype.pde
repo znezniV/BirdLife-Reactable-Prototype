@@ -155,6 +155,9 @@ void updateTuioObject (TuioObject tobj) {
 
 // called when an object is removed from the scene
 void removeTuioObject(TuioObject tobj) {
+	soundMapping(tobj.getSymbolID()).rewind();
+	soundMapping(tobj.getSymbolID()).play();
+
 	if (verbose) println("del obj " + tobj.getSymbolID() + " (" + tobj.getSessionID() + ")");
 }
 
