@@ -113,6 +113,7 @@ void draw() {
 	for (Field field : fields) {
 		field.draw();
 
+		// check if field is correct
 		if (!field.correctBlock) {
 			allFieldsCorrect = false;
 		}
