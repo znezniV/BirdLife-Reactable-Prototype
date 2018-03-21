@@ -55,7 +55,7 @@ class Field {
 		fill(0);
 		pushMatrix();
 		translate(x, y);
-		rotate(radians(-90));
+		rotate(radians(90));
 		textFont(font,40);
 		text(text, 0 - w/8, 0 + h/9);
 		popMatrix();
