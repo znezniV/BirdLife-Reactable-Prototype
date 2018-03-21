@@ -153,7 +153,6 @@ void draw() {
 					snippetCount++;
 				}
 			}
-		}
 
 		} else {
 			snippetCount = 0;
