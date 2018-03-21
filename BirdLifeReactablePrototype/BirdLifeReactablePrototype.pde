@@ -113,10 +113,16 @@ void draw() {
 
 	// check fields filled correctly
 	boolean allFieldsCorrect = true;
+	boolean allFieldsOccupied = true;
 
 	// draw fields
 	for (Field field : fields) {
 		field.draw();
+
+		// check if all fields are occupied 
+		if (!field.isOccupied) {
+			allFieldsOccupied = false;
+		}
 
 		// check if field is correct
 		if (!field.correctBlock) {
