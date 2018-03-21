@@ -65,10 +65,10 @@ class Field {
 		for (int i = 0; i < tuioObjectList.size(); i++) {
 			TuioObject block = tuioObjectList.get(i);
 			if (
-				trX(block.getScreenX(width)) >= x &&
+				trX(block.getScreenX(width)) >= x - w &&
 				trX(block.getScreenX(width)) <= x + w && 
-				block.getScreenY(height) >= y && 
-				block.getScreenY(height) <= y + h
+				block.getScreenY(height) >= y - h/2 && 
+				block.getScreenY(height) <= y + h/2
 			) {
 				for (int number : nrs) {
 					if (block.getSymbolID() == number) {
