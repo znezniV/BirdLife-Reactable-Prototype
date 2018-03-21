@@ -27,6 +27,10 @@ boolean callback = true; // updates only after callbacks
 
 boolean projector = false;
 
+color colorNeutral = color(64);
+color colorSuccess = color(0,255,0);
+color colorError = color(255,0,0);
+
 // tuio object list
 ArrayList<TuioObject> tuioObjectList;
 

@@ -11,10 +11,6 @@ class Field {
 	boolean isOccupied;
 	color c;
 
-	color colorNeutral = color(64);
-	color colorSuccess = color(0,255,0);
-	color colorError = color(255,0,0);
-
 	String cat;
 	String text;
 
