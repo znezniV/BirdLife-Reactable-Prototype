@@ -122,7 +122,14 @@ void draw() {
 		field.draw();
 
 		// check if all fields are occupied 
-		if (!field.isOccupied) {
+		if (field.isOccupied) {
+
+			// hightlight that field is occupied 
+			field.state = "occupied";
+		} else {
+
+			// switch back to empty if removed
+			field.state = "empty";
 			allFieldsOccupied = false;
 		}
 
@@ -137,6 +144,11 @@ void draw() {
 
 		// if fields are filled correctly
 		if (allFieldsCorrect) {
+
+			// switch all fields to correct state
+			for (Field field : fields) {
+				field.state = "correct";
+			}
 
 			// play first snippet
 			if (snippetCount == 0) {
@@ -162,7 +174,7 @@ void draw() {
 			// when all fields are occupied, hightlight the wrong fields
 			for (Field field : fields) {
 				if (!field.correctBlock) {
-					field.c = colorError;
+					field.state = "wrong";
 				}
 			}
 		}
