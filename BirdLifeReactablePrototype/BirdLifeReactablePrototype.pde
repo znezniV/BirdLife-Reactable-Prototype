@@ -29,7 +29,6 @@ boolean projector = false;
 
 color colorBG = color(0);
 color colorNeutral = color(64);
-color colorError = color(255,0,0);
 color colorSuccess = color(18,178,82);
 color colorError = color(178,17,17);
 
