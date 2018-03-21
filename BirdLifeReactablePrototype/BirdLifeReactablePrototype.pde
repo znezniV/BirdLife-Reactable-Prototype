@@ -130,28 +130,50 @@ void draw() {
 		}
 	}
 
-	// if fields are filled correctly
-	if (allFieldsCorrect) {
+	// if fields are occupied
+	if (allFieldsOccupied) {
 
-		if (snippetCount == 0) {
+		// if fields are filled correctly
+		if (allFieldsCorrect) {
 
-			soundMapping(fields[0].correctID).rewind();
-			soundMapping(fields[0].correctID).play();
-			snippetCount++;
+			// play first snippet
+			if (snippetCount == 0) {
 
-		} else if (snippetCount < sounds.length) {
-
-			if (!soundMapping(fields[snippetCount - 1].correctID).isPlaying()) {
-
-				soundMapping(fields[snippetCount].correctID).rewind();
-				soundMapping(fields[snippetCount].correctID).play();
+				soundMapping(fields[0].correctID).rewind();
+				soundMapping(fields[0].correctID).play();
 				snippetCount++;
+
+			} else if (snippetCount < sounds.length) {
+
+				// play following snippets if the previous isn't playing
+				if (!soundMapping(fields[snippetCount - 1].correctID).isPlaying()) {
+
+					soundMapping(fields[snippetCount].correctID).rewind();
+					soundMapping(fields[snippetCount].correctID).play();
+					snippetCount++;
+				}
 			}
 		}
 
+		} else {
+			snippetCount = 0;
+
+			// when all fields are occupied, hightlight the wrong fields
+			for (Field field : fields) {
+				if (!field.correctBlock) {
+					field.c = colorError;
+				}
+			}
+		}
 	} else {
-		snippetCount = 0;
-	}
+
+		// remove error highlighting if not all fields are occupied
+		for (Field field : fields) {
+			if (!field.correctBlock) {
+				field.c = colorNeutral;
+			}
+		}
+	}	
 }
 
 // map sounds to argument
