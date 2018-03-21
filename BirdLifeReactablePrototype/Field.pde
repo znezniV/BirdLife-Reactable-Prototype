@@ -10,9 +10,11 @@ class Field {
 	boolean correctBlock;
 	boolean isOccupied;
 	color c;
+	color cHighlight;
 
 	String cat;
 	String text;
+	String state;
 
 	int[] nrs;
 
@@ -27,38 +29,69 @@ class Field {
 		c = colorNeutral;
 		cat = category;
 		nrs = numbers;
+		state = "empty";
 	}
 
 	void draw() { 
 		noStroke();
 		fill(c);
+		noStroke();
 		ellipse(x, y, w, h);
 		collideWithBlock();
-
-		switch (cat) {
-			case "alpha": text = "α";
-				break;
-			case "beta": text = "β";
-				break;
-			case "gamma": text = "γ";
-				break;
-			case "omega": text = "ω";
-				break;
-			default : text = "XXX";
-				break;	
-		}
-		fill(0);
 		pushMatrix();
 		translate(x, y);
 		rotate(radians(90));
+		// choose label
+		switch (cat) {
+			case "alpha": 
+				text = "α";
+				break;
+			case "beta": 
+				text = "β";
+				break;
+			case "gamma": 
+				text = "γ";
+				break;
+			case "omega": 
+				text = "ω";
+				break;
+			default : 
+				text = "XXX";
+				break;	
+		}
+		fill(colorBG);
 		textFont(font,40);
 		text(text, 0 - w/8, 0 + h/9);
+		// choose color validation highlighting
+		switch (state) {
+			case "empty":
+				cHighlight = colorBG;
+				break;
+			case "occupied":
+				cHighlight = color(32);
+				break;
+			case "correct":
+				cHighlight = colorSuccess;
+				break;
+			case "wrong":
+				cHighlight = colorError;
+				break;
+			default :
+				cHighlight = colorBG;
+				break;	
+		}
+		stroke(cHighlight);
+		strokeWeight(10);
+		noFill();
+		ellipse(0, 0, w + 10, h + 10);
 		popMatrix();
 	}
 
 	void collideWithBlock() {
 		for (int i = 0; i < tuioObjectList.size(); i++) {
 			TuioObject block = tuioObjectList.get(i);
+
+			// detection of collition with tuio object
 			if (
 				trX(block.getScreenX(width)) >= x - w &&
 				trX(block.getScreenX(width)) <= x + w && 
