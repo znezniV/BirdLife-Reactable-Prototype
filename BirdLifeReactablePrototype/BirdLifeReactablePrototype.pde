@@ -41,14 +41,14 @@ void setup() {
 	fill(0);
 
 	// Configure fields
-	fields[0] = new Field(new PVector(1296, 999), new int[] {0, 2}, "alpha");
-	fields[1] = new Field(new PVector(1296, 868), new int[] {1}, "alpha");
-	fields[2] = new Field(new PVector(1296, 737), new int[] {2}, "alpha");
-	fields[3] = new Field(new PVector(1425, 606), new int[] {3}, "beta");
-	fields[4] = new Field(new PVector(1425, 475), new int[] {3}, "beta");
-	fields[5] = new Field(new PVector(1553, 343), new int[] {3}, "gamma");
-	fields[6] = new Field(new PVector(1553, 212), new int[] {3}, "gamma");
-	fields[7] = new Field(new PVector(1682, 81), new int[] {3}, "omega");
+	fields[0] = new Field(new PVector(674, 81), new int[] {7, 2}, "alpha");
+	fields[1] = new Field(new PVector(674, 212), new int[] {1}, "alpha");
+	fields[2] = new Field(new PVector(674, 343), new int[] {2}, "alpha");
+	fields[3] = new Field(new PVector(545, 474), new int[] {3}, "beta");
+	fields[4] = new Field(new PVector(545, 604), new int[] {4}, "beta");
+	fields[5] = new Field(new PVector(416, 737), new int[] {5}, "gamma");
+	fields[6] = new Field(new PVector(416, 868), new int[] {6}, "gamma");
+	fields[7] = new Field(new PVector(287, 999), new int[] {7, 0}, "omega");
 
 	minim = new Minim (this);
 
