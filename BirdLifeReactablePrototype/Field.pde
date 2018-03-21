@@ -123,7 +123,6 @@ class Field {
 				isOccupied = false;
 				occupiedID = null;
 				correctID = null;
-
 			}
 		}
 	}
