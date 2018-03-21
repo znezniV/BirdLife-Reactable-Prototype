@@ -27,7 +27,6 @@ class Field {
 		c = colorNeutral;
 		cat = category;
 		nrs = numbers;
-
 	}
 
 	void draw() { 
@@ -74,10 +73,10 @@ class Field {
 				}
 					
 				if (correctBlock) {
-					c = colorSuccess;
+					// c = colorSuccess;
 					correctID = block.getSymbolID();
 				} else {
-					c = colorError;
+					// c = colorError;
 					correctID = null;
 				}
 
@@ -86,7 +85,7 @@ class Field {
 				break;
 
 			} else {
-				c = colorNeutral;
+				// c = colorNeutral;
 				correctBlock = false;
 				isOccupied = false;
 				occupiedID = null;
