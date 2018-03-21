@@ -90,7 +90,7 @@ void draw() {
 	if (!projector) {
 		scale(0.5);	
 	}
-	background(0);
+	background(colorBG);
 	textFont(font,18 * scale_factor);
 	float obj_size = object_size * scale_factor; 
 	float cur_size = cursor_size * scale_factor;
