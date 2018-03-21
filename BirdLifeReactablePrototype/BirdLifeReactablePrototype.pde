@@ -45,7 +45,7 @@ void setup() {
 	fill(0);
 
 	// Configure fields
-	fields[0] = new Field(new PVector(674, 81), new int[] {7, 2}, "alpha");
+	fields[0] = new Field(new PVector(674, 81), new int[] {0, 2}, "alpha");
 	fields[1] = new Field(new PVector(674, 212), new int[] {1}, "alpha");
 	fields[2] = new Field(new PVector(674, 343), new int[] {2}, "alpha");
 	fields[3] = new Field(new PVector(545, 474), new int[] {3}, "beta");
