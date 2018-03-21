@@ -25,7 +25,7 @@ PFont font;
 boolean verbose = false; // print console debug messages
 boolean callback = true; // updates only after callbacks
 
-boolean projector = false;
+boolean projector = true;
 
 color colorBG = color(0);
 color colorNeutral = color(64);
@@ -37,9 +37,9 @@ ArrayList<TuioObject> tuioObjectList;
 
 void setup() {
 	// GUI setup
-	// fullScreen();
+	fullScreen();
 
-	size(960, 540);
+	// size(960, 540);
 
 	noCursor();
 	noStroke();
@@ -59,11 +59,11 @@ void setup() {
 
 	sounds[0] = minim.loadFile("sounds/Alpha01.wav");
 	sounds[1] = minim.loadFile("sounds/Alpha02.wav");
-	sounds[2] = minim.loadFile("sounds/Beta01.wav");
-	sounds[3] = minim.loadFile("sounds/Gamma01.wav");
-	sounds[4] = minim.loadFile("sounds/Gamma02.wav");
-	sounds[5] = minim.loadFile("sounds/Omega01.wav");
-	sounds[6] = minim.loadFile("sounds/Omega01.wav");
+	sounds[2] = minim.loadFile("sounds/Alpha03.wav");
+	sounds[3] = minim.loadFile("sounds/Beta01.wav");
+	sounds[4] = minim.loadFile("sounds/Beta02.wav");
+	sounds[5] = minim.loadFile("sounds/Gamma01.wav");
+	sounds[6] = minim.loadFile("sounds/Gamma02.wav");
 	sounds[7] = minim.loadFile("sounds/Omega01.wav");
 	
 	// periodic updates
@@ -185,7 +185,10 @@ void draw() {
 				field.c = colorNeutral;
 			}
 		}
-	}	
+	}
+
+	fill(colorNeutral);
+	rect(30, 30, 100, height-60, 60);	
 }
 
 // map sounds to argument
