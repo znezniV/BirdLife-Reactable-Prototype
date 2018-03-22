@@ -1,9 +1,14 @@
 // import the TUIO library
 import TUIO.*;
 import processing.sound.*;
-
+import processing.video.*;
 import ddf.minim.*;
+
+// declare a Minim sound
 Minim minim;
+
+// declare movie variable
+Movie birdAnimation;
 
 // declare a TuioProcessing client
 TuioProcessing tuioClient;
@@ -68,7 +73,12 @@ void setup() {
 	sounds[6] = minim.loadFile("sounds/Gamma02.wav");
 	sounds[7] = minim.loadFile("sounds/Omega01.wav");
 	
+	// load image for parking space
 	uglyParking = loadImage("img/parking.png");
+
+	// load video for bird animation
+	birdAnimation = new Movie(this, "video/birdAnimation.mov");
+	birdAnimation.loop();
 
 	// periodic updates
 	if (!callback) {
@@ -198,7 +208,14 @@ void draw() {
 
 	// ugly parking space
 	image(uglyParking, 0, 0, 80, height);
-	
+
+	pushMatrix();
+	// play bird animation
+	translate(width, 0);
+	rotate(radians(90));
+	image(birdAnimation, 0, 0, 1080, 888);
+	popMatrix();
+
 	pushMatrix();
 	translate(907, 540);
 	rotate(radians(90));
@@ -206,7 +223,7 @@ void draw() {
 	fill(255);
 	textFont(font,25);
 	text("«My song typically contains sections (phrases) of four types, which are labeled Alpha, Beta, Gamma and Omega.»", -height/2 + 30, -250+60, height - 30, 250);
-	popMatrix();	
+	popMatrix();
 }
 
 // map sounds to argument
@@ -234,6 +251,11 @@ AudioPlayer soundMapping(int id) {
 // mirror x-position of tujo object
 int trX (int posX) {
 	return width - posX;
+}
+
+// Called every time a new frame is available to read
+void movieEvent(Movie m) {
+	m.read();
 }
 
 // called when an object is added to the scene
