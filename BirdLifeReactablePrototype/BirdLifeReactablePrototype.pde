@@ -32,6 +32,8 @@ color colorNeutral = color(64);
 color colorSuccess = color(18,178,82);
 color colorError = color(178,17,17);
 
+PImage uglyParking;
+
 // tuio object list
 ArrayList<TuioObject> tuioObjectList;
 
@@ -66,6 +68,8 @@ void setup() {
 	sounds[6] = minim.loadFile("sounds/Gamma02.wav");
 	sounds[7] = minim.loadFile("sounds/Omega01.wav");
 	
+	uglyParking = loadImage("img/parking.png");
+
 	// periodic updates
 	if (!callback) {
 		frameRate(60);
@@ -188,7 +192,12 @@ void draw() {
 	}
 	noStroke();
 	fill(colorNeutral);
-	rect(30, 30, 100, height-60, 60);
+
+	// nice parking space
+	// rect(30, 30, 100, height-60, 60);
+
+	// ugly parking space
+	image(uglyParking, 0, 0, 80, height);
 	
 	pushMatrix();
 	translate(907, 540);
@@ -197,7 +206,6 @@ void draw() {
 	fill(255);
 	textFont(font,25);
 	text("«My song typically contains sections (phrases) of four types, which are labeled Alpha, Beta, Gamma and Omega.»", -height/2 + 30, -250+60, height - 30, 250);
-
 	popMatrix();	
 }
 
