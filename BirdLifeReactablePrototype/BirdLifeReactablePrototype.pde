@@ -186,9 +186,19 @@ void draw() {
 			}
 		}
 	}
-
+	noStroke();
 	fill(colorNeutral);
-	rect(30, 30, 100, height-60, 60);	
+	rect(30, 30, 100, height-60, 60);
+	
+	pushMatrix();
+	translate(907, 540);
+	rotate(radians(90));
+	rect(-height/2, -250, height, 250);
+	fill(255);
+	textFont(font,25);
+	text("«My song typically contains sections (phrases) of four types, which are labeled Alpha, Beta, Gamma and Omega.»", -height/2 + 30, -250+60, height - 30, 250);
+
+	popMatrix();	
 }
 
 // map sounds to argument
