@@ -25,7 +25,11 @@ float cursor_size = 15;
 float object_size = 60;
 float table_size = 760;
 float scale_factor = 1;
+
 PFont font;
+PFont textFont;
+PFont textFontBold;
+PFont fontIcon;
 
 boolean verbose = false; // print console debug messages
 boolean callback = false; // updates only after callbacks
@@ -53,14 +57,14 @@ void setup() {
 	fill(0);
 
 	// Configure fields
-	fields[0] = new Field(new PVector(674, 81), new int[] {0, 2}, "alpha");
-	fields[1] = new Field(new PVector(674, 212), new int[] {1}, "alpha");
-	fields[2] = new Field(new PVector(674, 343), new int[] {2}, "alpha");
-	fields[3] = new Field(new PVector(545, 474), new int[] {3}, "beta");
-	fields[4] = new Field(new PVector(545, 604), new int[] {4}, "beta");
-	fields[5] = new Field(new PVector(416, 737), new int[] {5}, "gamma");
-	fields[6] = new Field(new PVector(416, 868), new int[] {6}, "gamma");
-	fields[7] = new Field(new PVector(287, 999), new int[] {7, 0}, "omega");
+	fields[0] = new Field(new PVector(674, 81), new int[] {0, 1, 2}, "alpha");
+	fields[1] = new Field(new PVector(674, 212), new int[] {0, 1, 2}, "alpha");
+	fields[2] = new Field(new PVector(674, 343), new int[] {0, 1, 2}, "alpha");
+	fields[3] = new Field(new PVector(545, 474), new int[] {3, 4}, "beta");
+	fields[4] = new Field(new PVector(545, 604), new int[] {3, 4}, "beta");
+	fields[5] = new Field(new PVector(416, 737), new int[] {5, 6}, "gamma");
+	fields[6] = new Field(new PVector(416, 868), new int[] {5, 6}, "gamma");
+	fields[7] = new Field(new PVector(287, 999), new int[] {7}, "omega");
 
 	minim = new Minim (this);
 
@@ -89,12 +93,17 @@ void setup() {
 	}
 	
 	font = createFont("HelveticaNeue", 20);
+	textFont = createFont("Phenomena-Regular", 26);
+	textFontBold = createFont("Phenomena-Black", 26);
+	fontIcon = createFont("HelveticaRoundedLTStd-Bd", 26);
+
 	scale_factor = height/table_size;
 	
 	// finally we create an instance of the TuioProcessing client
 	// since we add "this" class as an argument the TuioProcessing class expects
 	// an implementation of the TUIO callback methods in this class (see below)
 	tuioClient  = new TuioProcessing(this);
+
 }
 
 // within the draw method we retrieve an ArrayList of type <TuioObject>
@@ -221,8 +230,23 @@ void draw() {
 	rotate(radians(90));
 	rect(-height/2, -250, height, 250);
 	fill(255);
-	textFont(font,25);
-	text("«My song typically contains sections (phrases) of four types, which are labeled Alpha, Beta, Gamma and Omega.»", -height/2 + 30, -250+60, height - 30, 250);
+	textFont(textFontBold,26);
+	text("Bring mir das Singen bei", -height/2 + 30, -250+20, height - 30, 250);
+	textFont(textFont,26);
+	text("«Als Baby-Vogel trainiere ich meine Singstimme, indem ich Geräusche in meiner Umgebung nachahme. Bring mir das Singen bei, indem du die Figuren auf die richtige Alpha-, Beta-, Gamma- und Omega-Position schiebst. Hebe die Figuren an, um das Gesangs-Element vorzuhören.»", -height/2 + 30, -250+60, height - 30, 250);
+	popMatrix();
+
+	noFill();
+	stroke(220, 250, 190);
+	strokeWeight(3);
+
+	pushMatrix();
+	translate(674, height-30-65);
+	rect(0, 0, 65, 65, 12);
+	textFont(fontIcon, 45);
+	rotate(radians(90));
+	fill(220, 250, 190);
+	text("?", 22, -17);
 	popMatrix();
 }
 
