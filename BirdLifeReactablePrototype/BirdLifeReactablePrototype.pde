@@ -28,7 +28,7 @@ float scale_factor = 1;
 PFont font;
 
 boolean verbose = false; // print console debug messages
-boolean callback = true; // updates only after callbacks
+boolean callback = false; // updates only after callbacks
 
 boolean projector = true;
 
